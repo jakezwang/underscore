@@ -1658,7 +1658,7 @@
     if (isArray(obj)) return slice.call(obj);
     if (isString(obj)) {
       // Keep surrogate pair characters together.
-      return obj.match(reStrSymbol);
+      return obj.match(reStrSymbol) || [];
     }
     if (isArrayLike(obj)) return map(obj, identity);
     return values(obj);
