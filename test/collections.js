@@ -581,6 +581,13 @@
     assert.strictEqual(_.max(null), -Infinity, 'can handle null/undefined');
     assert.strictEqual(_.max(void 0), -Infinity, 'can handle null/undefined');
     assert.strictEqual(_.max(null, _.identity), -Infinity, 'can handle null/undefined');
+    assert.strictEqual(_.max(null, 0), -Infinity, 'can handle null/undefined with a numeric iteratee');
+    assert.strictEqual(_.max(void 0, 0), -Infinity, 'can handle null/undefined with a numeric iteratee');
+    assert.strictEqual(_.max(null, 'a'), -Infinity, 'can handle null/undefined with a property name iteratee');
+    assert.strictEqual(_.max(void 0, ['a', 0]), -Infinity, 'can handle null/undefined with a deep property path iteratee');
+    assert.strictEqual(_.max(null, {a: 1}), -Infinity, 'can handle null/undefined with a matcher iteratee');
+    assert.strictEqual(_.max(void 0, _.identity, {}), -Infinity, 'can handle null/undefined with an iteratee and context');
+    assert.strictEqual(_.max(null, function() { assert.ok(false, 'iteratee should not be called'); }), -Infinity, 'does not invoke the iteratee for null/undefined');
 
     assert.strictEqual(_.max([1, 2, 3]), 3, 'can perform a regular Math.max');
 
@@ -626,6 +633,13 @@
     assert.strictEqual(_.min(null), Infinity, 'can handle null/undefined');
     assert.strictEqual(_.min(void 0), Infinity, 'can handle null/undefined');
     assert.strictEqual(_.min(null, _.identity), Infinity, 'can handle null/undefined');
+    assert.strictEqual(_.min(null, 0), Infinity, 'can handle null/undefined with a numeric iteratee');
+    assert.strictEqual(_.min(void 0, 0), Infinity, 'can handle null/undefined with a numeric iteratee');
+    assert.strictEqual(_.min(null, 'a'), Infinity, 'can handle null/undefined with a property name iteratee');
+    assert.strictEqual(_.min(void 0, ['a', 0]), Infinity, 'can handle null/undefined with a deep property path iteratee');
+    assert.strictEqual(_.min(null, {a: 1}), Infinity, 'can handle null/undefined with a matcher iteratee');
+    assert.strictEqual(_.min(void 0, _.identity, {}), Infinity, 'can handle null/undefined with an iteratee and context');
+    assert.strictEqual(_.min(null, function() { assert.ok(false, 'iteratee should not be called'); }), Infinity, 'does not invoke the iteratee for null/undefined');
 
     assert.strictEqual(_.min([1, 2, 3]), 1, 'can perform a regular Math.min');
 
